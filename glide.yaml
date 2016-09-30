@@ -1,3 +1,4 @@
 package: main
 import:
 - package: github.com/go-telegram-bot-api/telegram-bot-api
+- package: github.com/technoweenie/multipartstreamer

@@ -17,7 +17,6 @@ func main() {
 	if storeErr != nil {
 		log.Panic(storeErr)
 	}
-
 	// Setup telegram polling for updates
 	bot, err := tgbotapi.NewBotAPI(helpers.GetEnvOrElse(telegramBotKey, ""))
 	if err != nil {
@@ -26,7 +25,6 @@ func main() {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 	updates, err := bot.GetUpdatesChan(u)
-
 	// Handle updates for anything that happens within the chat
 	for update := range updates {
 		// continue on any messages that are pictures

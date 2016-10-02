@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/awaseem/LindaTheBot/helpers"
 	"github.com/awaseem/LindaTheBot/store"
+	"github.com/awaseem/LindaTheBot/telegramHelpers"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	if storeErr != nil {
 		log.Panic(storeErr)
 	}
-	updates := helpers.StartChannel()
+	updates := telegramHelpers.StartChannel()
 	// Handle updates for anything that happens within the chat
-	helpers.HandleUpdates(updates)
+	telegramHelpers.HandleUpdates(updates)
 }

@@ -2,4 +2,4 @@ package: main
 import:
 - package: github.com/go-telegram-bot-api/telegram-bot-api
 - package: github.com/technoweenie/multipartstreamer
-- package: github.com/mattn/go-sqlite3
+- package: github.com/go-sql-driver/mysql

@@ -1,8 +1,9 @@
-package helpers
+package telegramHelpers
 
 import (
 	"log"
 
+	"github.com/awaseem/LindaTheBot/helpers"
 	"github.com/awaseem/LindaTheBot/interactions"
 	"github.com/awaseem/LindaTheBot/store"
 	"github.com/go-telegram-bot-api/telegram-bot-api"
@@ -15,7 +16,7 @@ var botAPI *tgbotapi.BotAPI
 // StartChannel start the channel
 func StartChannel() <-chan tgbotapi.Update {
 	// Setup telegram polling for updates
-	bot, err := tgbotapi.NewBotAPI(GetEnvOrElse(telegramBotKey, ""))
+	bot, err := tgbotapi.NewBotAPI(helpers.GetEnvOrElse(telegramBotKey, ""))
 	if err != nil {
 		log.Panic(err)
 	} else {

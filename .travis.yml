@@ -1,0 +1,20 @@
+sudo: false
+language: go
+go:
+    - 1.6
+install:
+    - go get github.com/go-telegram-bot-api/telegram-bot-api
+    - go get github.com/technoweenie/multipartstreamer
+    - go get github.com/go-sql-driver/mysql
+services:
+    - docker
+before_install:
+    - sleep 15
+    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+after_success:
+    - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o LindaTheBot
+    - sleep 5
+    - docker build -t awaseem/linda:$TRAVIS_BRANCH-$TRAVIS_COMMIT .
+    - sleep 5
+    - docker push awaseem/linda:$TRAVIS_BRANCH-$TRAVIS_COMMIT
+    - docker logout
